@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clase this</title>
+</head>
+<body>
+    <h1>this is :</h1>
+    
+
+    <script>
+        // this en el scope global 
+        console.log(`this is: ${this}`)// hace referencia al gran objeto window
+        // this en el scope local
+        function whoIsThis(){
+            return this 
+        };
+        console.log(`whoIsThis : ${whoIsThis()}`);// seguira tratandolo como una instancia de window
+        
+        //this strict mode
+        function whoIsThis2(){
+            "use strict"
+            return this
+        };
+        console.log(`who is this: ${whoIsThis2()}`);
+
+        //block scope
+
+        const person = {
+            name: "jorge",
+            saludar(){
+                return (`hola mi nombre es: ${this.name}`)// this se refiere al objeto del que hace parte en este caso al objeto (person)
+            },
+        };
+
+        console.log(person.saludar());
+
+        class people {
+            constructor(name){
+                this.name = name
+            }
+
+            saludar(){
+                return (`mi nombre es: ${this.name}`)
+            };
+        }
+
+        const angela = new people("jorge");
+        console.log(angela.saludar());
+
+
+        
+
+
+
+
+    </script>
+</body>
+</html>
