@@ -10,9 +10,9 @@ button2.addEventListener("click",muteVideo);
 const player = new mediaPlayer({el: video1, plugins: new autoPlay()});
 
 
-autoPlay.prototype.run = function(player){
-    player.pause()
-    player.play()
+autoPlay.prototype.run = (player) => {
+    player.pause();
+    player.play();
 };
 
 

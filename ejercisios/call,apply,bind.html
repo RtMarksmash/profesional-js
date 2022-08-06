@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call-apply and bind</title>
+</head>
+<body>
+    <h1>apply-call-bind</h1>
+
+    <ul>
+        <li><button class="button">Aprender</button></li>
+        <li><button class="button">Aprender mas</button></li>
+        <li><button class="button">Nunca deja de aprender</button></li>
+    </ul>
+    <style>
+        button{
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function saludar(){
+            console.log(`hola soy: ${this.name} ${this.lastname}`)
+        };
+
+        const jorge = {
+            name: 'mario',
+            lastname: 'mora'
+
+        };
+
+        saludar.call(jorge);// call se utiliza para llamar this que no estan definidos antes de la creacion de la funcion 
+
+        function caminar(metro,direccion){
+            console.log(`mi nombres es: ${this.name} camino ${metro} metros hacia ${direccion}`);
+        };
+
+        caminar.call(jorge,600,'norte');
+
+        const valores = [800,'noreste'];
+
+        caminar.apply(jorge, valores);
+
+        // apply se usa para arrays
+        // call separado con comas 
+
+        const daniel = {name: 'daniel' , lastname: 'florez' };
+        const saludaDaniel = saludar.bind(daniel)
+        saludaDaniel();
+
+        const danielCamina = caminar.bind(daniel, 700);
+        danielCamina( 'sur');
+
+        const button = document.getElementsByClassName("button");
+    /*     button.forEach( button => {
+            button.onclick = () =>{
+                alert("nunca pares de aprender")
+            }
+            
+        }); */
+     
+    Array.prototype.forEach.call(button, button => button.onclick = () =>{
+        alert("nunca pares de aprender");
+    })
+
+
+
+
+
+
+    </script>
+</body>
+</html>
