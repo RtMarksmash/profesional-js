@@ -1,3 +1,4 @@
+import mediaPlayer from "../assets/mediaplayer";
 
 
  class autoPlay{
@@ -6,7 +7,12 @@
 
     }
     run(){
-        
+        if(!player.muted){
+            player.muted = true;
+        }else {
+            this.video.play();
+        }
+         
     };
 }
 

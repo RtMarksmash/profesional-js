@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // un generator es una funcion que inicia suspendida y 
+        function* simpleGenerator(){
+            console.log("GENERATOR BEGIN");
+            yield 1;
+            yield 2;
+            yield 3;
+            console.log("GENERATOR END");
+        };
+
+        const gen = simpleGenerator();
+       
+    //creador de id 
+        function* idMaker(){
+            let id = 1;
+            while(true){
+                yield id++
+            };
+        };
+
+        const gen1 = idMaker();
+
+        function* idMakerWithReset(){
+            let id = 1;
+            let reset;
+            while(true){
+                reset = yield id
+                if(reset){
+                    id = 1
+                }else{
+                    id++
+                }
+            }
+        }
+
+        const gen2 = idMakerWithReset();
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

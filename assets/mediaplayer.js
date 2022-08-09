@@ -2,7 +2,27 @@
     constructor (config){
         this.media = config.el ;
         this.plugins = config.plugins || [];
+
+        //this._initPlugin();
          
+    }
+    _initPlugin(){
+        const player = {
+            play: () => this.play(),
+            pause:() => this.pause(),
+            media: this.media,
+            get muted() {
+                this.media.muted;
+            },
+            set muted(value) {
+                this.media.muted = value;
+
+            },
+
+        }
+        this.plugins.forEach(plugin => {
+            plugin.run(player);
+        });
     }
 
     play(){
@@ -19,7 +39,7 @@
     }
 
     toggleMuted(){
-        
+
         this.media.muted? this.unMuted() : this.muted();
     }
 
